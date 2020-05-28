@@ -1,6 +1,5 @@
 package com.example.todos.todo;
 
-
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,9 +38,10 @@ public class TodoController{
         Todo existingTodo = new Todo();
         try{
             existingTodo = todoRepository.findById(id).orElseThrow();
+            existingTodo.setTitle(todo.getTitle());
             existingTodo.setDescription(todo.getDescription());
             existingTodo.setComplete(todo.isComplete());
-            existingTodo.setTitle(todo.getTitle());
+
         } catch (NoSuchElementException e) {
             System.out.println(e.getMessage());
             existingTodo = todoRepository.save(todo);
