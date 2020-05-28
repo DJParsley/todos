@@ -37,7 +37,7 @@ public class TodoController{
 
         Todo existingTodo = new Todo();
         try{
-            existingTodo = todoRepository.findById(id).orElseThrow();
+            existingTodo = todoRepository.findById(id).get();
             existingTodo.setTitle(todo.getTitle());
             existingTodo.setDescription(todo.getDescription());
             existingTodo.setComplete(todo.isComplete());
